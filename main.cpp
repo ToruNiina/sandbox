@@ -9,5 +9,10 @@ int main()
     {
         std::cout << test["name"] << std::endl;
     }
+
+    std::cout << "============================================================" << std::endl;
+
+    std::cout << std::setw(15) << data << std::endl;
+
     return 0;
 }

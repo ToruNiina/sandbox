@@ -24,4 +24,4 @@ jobs:
             cmake --build . --config "${{ matrix.config }}"
       - name: Test
         run: |
-            ctest --build-config "${{ matrix.config }}" --output-on-failure
+            ctest --build-config "${{ matrix.config }}" --verbose
