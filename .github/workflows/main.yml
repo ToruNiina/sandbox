@@ -1,0 +1,29 @@
+name: build
+
+on: push
+
+jobs:
+  build-windows-msvc:
+    runs-on: windows-2019
+    strategy:
+      matrix:
+        standard: ['17']
+        config: ['Release', 'Debug']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true
+      - uses: ilammy/msvc-dev-cmd@v1
+      - name: Configure
+        shell: cmd
+        run: |
+            cmake ../ -G "NMake Makefiles" -DCMAKE_CXX_STANDARD=${{ matrix.standard }} -DBoost_ADDITIONAL_VERSIONS=1.72.0 -DBoost_USE_MULTITHREADED=ON -DBoost_ARCHITECTURE=-x64 -DBoost_NO_BOOST_CMAKE=ON -DBOOST_ROOT=%BOOST_ROOT_1_72_0%
+      - name: Build
+        working-directory: ./build
+        run: |
+            cmake --build . --config "${{ matrix.config }}"
+      - name: Test
+        working-directory: ./build
+        run: |
+            ctest --build-config "${{ matrix.config }}" --output-on-failure
