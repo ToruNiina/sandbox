@@ -6,7 +6,8 @@ int main()
 
     while(*chars != '\0')
     {
-        const unsigned int c(*chars);
+        const unsigned char uc(*reinterpret_cast<const unsigned char*>(chars));
+        const unsigned int  c(uc);
         std::cout << std::hex << c << std::endl;
         ++chars;
     }
