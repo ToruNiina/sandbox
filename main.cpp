@@ -8,6 +8,7 @@ int main()
     {
         const unsigned int c(*chars);
         std::cout << std::hex << c << std::endl;
+        ++chars;
     }
 
     return 0;
