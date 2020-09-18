@@ -12,5 +12,6 @@ project(test)
 #     INSTALL_COMMAND "")
 #
 # include_directories(${CMAKE_SOURCE_DIR})
+add_definitions("/utf-8")
 add_executable(main main.cpp)
 add_test(NAME main COMMAND main WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
