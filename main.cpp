@@ -1,16 +1,9 @@
 #include <iostream>
+#include "toml.hpp"
 
 int main()
 {
-    const auto* chars = u8"ひらがな";
-
-    while(*chars != '\0')
-    {
-        const unsigned char uc(*reinterpret_cast<const unsigned char*>(chars));
-        const unsigned int  c(uc);
-        std::cout << std::hex << c << std::endl;
-        ++chars;
-    }
-
+    const toml::value v{42, 54, 69, 72};
+    const auto ary = toml::get<std::array<int, 4>>(v);
     return 0;
 }
