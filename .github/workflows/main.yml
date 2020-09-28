@@ -18,10 +18,10 @@ jobs:
       - name: Configure
         shell: cmd
         run: |
+            git clone https://github.com/ToruNiina/toml11.git
             cmake . -G "NMake Makefiles" -DCMAKE_CXX_STANDARD=${{ matrix.standard }}
             cd toml11
             git apply ../get.patch
-            cd ..
       - name: Build
         run: |
             cmake --build . --config "${{ matrix.config }}"
