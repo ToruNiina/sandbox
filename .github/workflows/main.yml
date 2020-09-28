@@ -19,6 +19,9 @@ jobs:
         shell: cmd
         run: |
             cmake . -G "NMake Makefiles" -DCMAKE_CXX_STANDARD=${{ matrix.standard }}
+            cd toml11
+            git apply ../get.patch
+            cd ..
       - name: Build
         run: |
             cmake --build . --config "${{ matrix.config }}"
