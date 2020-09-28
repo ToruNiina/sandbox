@@ -7,7 +7,7 @@ jobs:
     runs-on: windows-2019
     strategy:
       matrix:
-        standard: ['17']
+        standard: ['20']
         config: ['Release', 'Debug']
     steps:
       - name: Checkout
