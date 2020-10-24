@@ -81,7 +81,7 @@
         static NAME from_toml(const basic_value<C, T, A>& v)                             \
         {                                                                                \
             NAME obj;                                                                    \
-            TOML11_FOR_EACH_VA_ARGS(TOML11_FIND_MEMBER_VARIABLE_FROM_VALUE, __VA_ARGS__) \
+            TOML11_MSVC_VA_ARGS_WORKAROUND_EXPANSION(TOML11_FOR_EACH_VA_ARGS(TOML11_FIND_MEMBER_VARIABLE_FROM_VALUE, __VA_ARGS__)) \
             return obj;                                                                  \
         }                                                                                \
     };                                                                                   \
@@ -91,7 +91,7 @@
         static value into_toml(const NAME& obj)                                          \
         {                                                                                \
             ::toml::value v = ::toml::table{};                                           \
-            TOML11_FOR_EACH_VA_ARGS(TOML11_ASSIGN_MEMBER_VARIABLE_TO_VALUE, __VA_ARGS__) \
+            TOML11_MSVC_VA_ARGS_WORKAROUND_EXPANSION(TOML11_FOR_EACH_VA_ARGS(TOML11_ASSIGN_MEMBER_VARIABLE_TO_VALUE, __VA_ARGS__)) \
             return v;                                                                    \
         }                                                                                \
     };                                                                                   \
