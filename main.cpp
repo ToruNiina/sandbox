@@ -20,7 +20,7 @@
     ARG11, ARG12, ARG13, ARG14, ARG15, ARG16, ARG17, ARG18, ARG19, ARG20, \
     ARG21, ARG22, ARG23, ARG24, ARG25, ARG26, ARG27, ARG28, ARG29, ARG30, \
     ARG31, ARG32, N, ...) N
-#define TOML11_ARGS_SIZE_AUX(...) TOML11_ARGS_SIZE_IMPL(__VA_ARGS__)
+#define TOML11_ARGS_SIZE_AUX(...) TOML11_MSVC_VA_ARGS_WORKAROUND_EXPANSION(TOML11_ARGS_SIZE_IMPL(__VA_ARGS__))
 #define TOML11_ARGS_SIZE(...) TOML11_ARGS_SIZE_AUX(__VA_ARGS__, TOML11_INDEX_RSEQ())
 
 // ----------------------------------------------------------------------------
@@ -81,7 +81,7 @@
         static NAME from_toml(const basic_value<C, T, A>& v)                             \
         {                                                                                \
             NAME obj;                                                                    \
-            TOML11_MSVC_VA_ARGS_WORKAROUND_EXPANSION(TOML11_FOR_EACH_VA_ARGS(TOML11_FIND_MEMBER_VARIABLE_FROM_VALUE, __VA_ARGS__)) \
+            TOML11_FOR_EACH_VA_ARGS(TOML11_FIND_MEMBER_VARIABLE_FROM_VALUE, __VA_ARGS__) \
             return obj;                                                                  \
         }                                                                                \
     };                                                                                   \
@@ -91,7 +91,7 @@
         static value into_toml(const NAME& obj)                                          \
         {                                                                                \
             ::toml::value v = ::toml::table{};                                           \
-            TOML11_MSVC_VA_ARGS_WORKAROUND_EXPANSION(TOML11_FOR_EACH_VA_ARGS(TOML11_ASSIGN_MEMBER_VARIABLE_TO_VALUE, __VA_ARGS__)) \
+            TOML11_FOR_EACH_VA_ARGS(TOML11_ASSIGN_MEMBER_VARIABLE_TO_VALUE, __VA_ARGS__) \
             return v;                                                                    \
         }                                                                                \
     };                                                                                   \
