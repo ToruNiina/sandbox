@@ -61,3 +61,4 @@ test_script:
   - build\tests\Debug\test_user_defined_conversion.exe
   - build\tests\Debug\test_value.exe
   - build\tests\Debug\test_visit.exe
+  - build\tests\Debug\test_parse.exe
