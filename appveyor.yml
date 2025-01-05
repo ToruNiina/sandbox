@@ -6,7 +6,6 @@ environment:
       generator: Visual Studio 15 2017
 
 configuration:
-  - Release
   - Debug
 
 clone_depth: 10
@@ -17,7 +16,7 @@ install:
 
 build_script:
   - cd C:\toml11
-  - cmake -B build -G"%generator%" -DCMAKE_SYSTEM_VERSION="10.0.26624.0" -A x64 -DCMAKE_CXX_STANDARD=11 -DTOML11_BUILD_TESTS=ON -DTOML11_PRECOMPILE=ON
+  - cmake -B build -G"%generator%" -DCMAKE_SYSTEM_VERSION="10.0.26624.0" -A x64 -DCMAKE_CXX_STANDARD=11 -DTOML11_BUILD_TESTS=ON -DBUILD_TESTING=ON -DTOML11_PRECOMPILE=ON
   - cmake --build build --config "%configuration%"
 
 test_script:
