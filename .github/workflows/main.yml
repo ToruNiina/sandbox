@@ -17,13 +17,15 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: true
-      - uses: ilammy/msvc-dev-cmd@v1
-        with:
-          toolset: 14.16
+
+      - name: Setup MSVC 2017
+        run: |
+          choco install visualstudio2017buildtools --no-progress --ignore-checksums
+          call "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
       - name: Configure
         shell: cmd
         run: |
-            cmake -B build/ -G "NMake Makefiles" -DTOML11_BUILD_TESTS=ON -DCMAKE_CXX_STANDARD=${{ matrix.standard }} -DTOML11_PRECOMPILE=${{ matrix.precompile }}
+            cmake -B build/ -G "Visual Studio 15 2017 Win64" -DTOML11_BUILD_TESTS=ON -DCMAKE_CXX_STANDARD=${{ matrix.standard }} -DTOML11_PRECOMPILE=${{ matrix.precompile }}
       - name: Build
         run: |
             cmake --build ./build --config "${{ matrix.config }}" -j${{ steps.cpu-cores.outputs.count }}
