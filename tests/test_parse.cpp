@@ -44,8 +44,8 @@ role = "backend")");
     CHECK_EQ(u, v);
 
 
-    CHECK_EQ(toml::find<int>(v, "ports", 0), 8000);
-    CHECK_EQ(toml::find<int>(v, "ports", 1), 8001);
-    CHECK_EQ(toml::find<int>(v, "ports", 2), 8002);
+    CHECK_EQ(toml::find<int>(v, "database", "ports", 0), 8000);
+    CHECK_EQ(toml::find<int>(v, "database", "ports", 1), 8001);
+    CHECK_EQ(toml::find<int>(v, "database", "ports", 2), 8002);
 }
 
