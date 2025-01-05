@@ -42,5 +42,10 @@ role = "backend")");
     const auto v = toml::parse("example.toml");
 
     CHECK_EQ(u, v);
+
+
+    CHECK_EQ(toml::find<int>(v, "ports", 0), 8000);
+    CHECK_EQ(toml::find<int>(v, "ports", 1), 8001);
+    CHECK_EQ(toml::find<int>(v, "ports", 2), 8002);
 }
 
