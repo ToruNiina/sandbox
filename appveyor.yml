@@ -19,6 +19,4 @@ build_script:
   - cd C:\toml11
   - cmake -B build -G"%generator%" -DCMAKE_SYSTEM_VERSION="%systemver%" -A x64 -DCMAKE_CXX_STANDARD=11 -DTOML11_BUILD_TESTS=ON -DTOML11_PRECOMPILE=ON
   - cmake --build build --config "%configuration%"
-
-test_script:
   - ctest --test-dir build --build-config "%configuration%" --timeout 300 --output-on-failure
