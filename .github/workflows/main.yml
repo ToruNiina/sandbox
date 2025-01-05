@@ -1,0 +1,32 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build-windows-msvc:
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        standard: ['11', '14', '17', '20']
+        config: ['Release', 'Debug']
+        precompile: ['ON', 'OFF']
+    steps:
+      - name: Get number of CPU cores
+        uses: SimenB/github-actions-cpu-cores@v2
+        id: cpu-cores
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: ilammy/msvc-dev-cmd@v1
+        with:
+          toolset: 14.16
+      - name: Configure
+        shell: cmd
+        run: |
+            cmake -B build/ -G "NMake Makefiles" -DTOML11_BUILD_TESTS=ON -DCMAKE_CXX_STANDARD=${{ matrix.standard }} -DTOML11_PRECOMPILE=${{ matrix.precompile }}
+      - name: Build
+        run: |
+            cmake --build ./build --config "${{ matrix.config }}" -j${{ steps.cpu-cores.outputs.count }}
+      - name: Test
+        run: |
+            ctest --build-config "${{ matrix.config }}" --test-dir build/ --output-on-failure
