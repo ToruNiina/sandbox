@@ -2,6 +2,7 @@
 #define TOML11_TYPES_HPP
 
 #include "comments.hpp"
+#include "compat.hpp"
 #include "error_info.hpp"
 #include "format.hpp"
 #include "ordered_map.hpp"
@@ -299,43 +300,40 @@ namespace detail
 // ----------------------------------------------------------------------------
 // check if type T has all the needed member types
 
-template <class...>
-using void_t = void;
-
 template<typename T, typename U = void>
 struct has_comment_type: std::false_type{};
 template<typename T>
-struct has_comment_type<T, void_t<typename T::comment_type>>: std::true_type{};
+struct has_comment_type<T, cxx::void_t<typename T::comment_type>>: std::true_type{};
 
 template<typename T, typename U = void>
 struct has_integer_type: std::false_type{};
 template<typename T>
-struct has_integer_type<T, void_t<typename T::integer_type>>: std::true_type{};
+struct has_integer_type<T, cxx::void_t<typename T::integer_type>>: std::true_type{};
 
 template<typename T, typename U = void>
 struct has_floating_type: std::false_type{};
 template<typename T>
-struct has_floating_type<T, void_t<typename T::floating_type>>: std::true_type{};
+struct has_floating_type<T, cxx::void_t<typename T::floating_type>>: std::true_type{};
 
 template<typename T, typename U = void>
 struct has_string_type: std::false_type{};
 template<typename T>
-struct has_string_type<T, void_t<typename T::string_type>>: std::true_type{};
+struct has_string_type<T, cxx::void_t<typename T::string_type>>: std::true_type{};
 
 template<typename T, typename U = void>
 struct has_array_type: std::false_type{};
 template<typename T>
-struct has_array_type<T, void_t<typename T::template array_type<int>>>: std::true_type{};
+struct has_array_type<T, cxx::void_t<typename T::template array_type<int>>>: std::true_type{};
 
 template<typename T, typename U = void>
 struct has_table_type: std::false_type{};
 template<typename T>
-struct has_table_type<T, void_t<typename T::template table_type<int, int>>>: std::true_type{};
+struct has_table_type<T, cxx::void_t<typename T::template table_type<int, int>>>: std::true_type{};
 
 template<typename T, typename U = void>
 struct has_parse_int: std::false_type{};
 template<typename T>
-struct has_parse_int<T, void_t<decltype(std::declval<T>().parse_int(
+struct has_parse_int<T, cxx::void_t<decltype(std::declval<T>().parse_int(
         std::declval<std::string const&>(),
         std::declval<::toml::source_location const&>(),
         std::declval<std::uint8_t>()
@@ -344,7 +342,7 @@ struct has_parse_int<T, void_t<decltype(std::declval<T>().parse_int(
 template<typename T, typename U = void>
 struct has_parse_float: std::false_type{};
 template<typename T>
-struct has_parse_float<T, void_t<decltype(std::declval<T>().parse_float(
+struct has_parse_float<T, cxx::void_t<decltype(std::declval<T>().parse_float(
         std::declval<std::string const&>(),
         std::declval<::toml::source_location const&>(),
         std::declval<bool>()
