@@ -335,12 +335,20 @@ struct has_table_type<T, void_t<typename T::table_type<int, int>>>: std::true_ty
 template<typename T, typename U = void>
 struct has_parse_int: std::false_type{};
 template<typename T>
-struct has_parse_int<T, void_t<decltype(T::parse_int)>>: std::true_type{};
+struct has_parse_int<T, void_t<decltype(std::declval<T>().parse_int(
+        std::declval<std::string const&>(),
+        std::declval<::toml::source_location const&>(),
+        std::declval<std::uint8_t>()
+    ))>>: std::true_type{};
 
 template<typename T, typename U = void>
 struct has_parse_float: std::false_type{};
 template<typename T>
-struct has_parse_float<T, void_t<decltype(T::parse_float)>>: std::true_type{};
+struct has_parse_float<T, void_t<decltype(std::declval<T>().parse_float(
+        std::declval<std::string const&>(),
+        std::declval<::toml::source_location const&>(),
+        std::declval<bool>()
+    ))>>: std::true_type{};
 
 template<typename T>
 using is_type_config = cxx::conjunction<
