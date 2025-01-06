@@ -325,12 +325,12 @@ struct has_string_type<T, void_t<typename T::string_type>>: std::true_type{};
 template<typename T, typename U = void>
 struct has_array_type: std::false_type{};
 template<typename T>
-struct has_array_type<T, void_t<typename T::array_type>>: std::true_type{};
+struct has_array_type<T, void_t<typename T::array_type<int>>>: std::true_type{};
 
 template<typename T, typename U = void>
 struct has_table_type: std::false_type{};
 template<typename T>
-struct has_table_type<T, void_t<typename T::table_type>>: std::true_type{};
+struct has_table_type<T, void_t<typename T::table_type<int, int>>>: std::true_type{};
 
 template<typename T, typename U = void>
 struct has_parse_int: std::false_type{};
