@@ -22,7 +22,6 @@ environment:
       CXX_VERSION: 17
 
 configuration:
-  - Release
   - Debug
 
 clone_depth: 10
