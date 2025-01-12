@@ -25,7 +25,8 @@ build_script:
 test_script:
   - dir build\
   - dir build\tests\
-  - ctest --test-dir build --timeout 300 --output-on-failure
+  - cd build\tests\
+  - ctest --timeout 300 --output-on-failure
   # - build\tests\Debug\test_comments.exe
   # - build\tests\Debug\test_datetime.exe
   # - build\tests\Debug\test_error_message.exe
