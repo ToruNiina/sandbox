@@ -8,6 +8,7 @@ environment:
       MSVC_VERSION: 2019
 
 configuration:
+  - Release
   - Debug
 
 clone_depth: 10
@@ -19,13 +20,14 @@ install:
 build_script:
   - '"C:\Program Files (x86)\Microsoft Visual Studio\%MSVC_VERSION%\Community\VC\Auxiliary\Build\vcvarsall.bat" x64'
   - cd C:\toml11
-  - cmake -B build -G"NMake Makefiles" -DCMAKE_CXX_STANDARD=11 -DTOML11_BUILD_TESTS=ON -DBUILD_TESTING=ON -DTOML11_PRECOMPILE=ON
+  - cmake -B build -G"NMake Makefiles" -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_CXX_STANDARD=11 -DTOML11_BUILD_TESTS=ON -DBUILD_TESTING=ON -DTOML11_PRECOMPILE=ON
   - cmake --build build
 
 test_script:
   - dir build\
   - dir build\tests\
-  - cd build\tests\
+  - dir build\tests\%configuration%
+  - cd build\tests\%configuration%
   - ctest --timeout 300 --output-on-failure
   # - build\tests\Debug\test_comments.exe
   # - build\tests\Debug\test_datetime.exe
