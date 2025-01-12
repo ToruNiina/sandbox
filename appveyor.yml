@@ -11,6 +11,11 @@ configuration:
   - Release
   - Debug
 
+cxxstd:
+  - 11
+  - 14
+  - 17
+
 clone_depth: 10
 clone_folder: c:\toml11
 
@@ -20,7 +25,7 @@ install:
 build_script:
   - '"C:\Program Files (x86)\Microsoft Visual Studio\%MSVC_VERSION%\Community\VC\Auxiliary\Build\vcvarsall.bat" x64'
   - cd C:\toml11
-  - cmake -B build -G"NMake Makefiles" -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_CXX_STANDARD=11 -DTOML11_BUILD_TESTS=ON -DBUILD_TESTING=ON -DTOML11_PRECOMPILE=ON
+  - cmake -B build -G"NMake Makefiles" -DCMAKE_BUILD_TYPE=%configuration% -DCMAKE_CXX_STANDARD=%cxxstd% -DTOML11_BUILD_TESTS=ON -DBUILD_TESTING=ON -DTOML11_PRECOMPILE=ON
   - cmake --build build
 
 test_script:
