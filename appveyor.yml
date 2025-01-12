@@ -15,9 +15,9 @@ install:
   - git submodule update --init --recursive
 
 build_script:
-  - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" /x64'
+  - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64 10.0.26624.0'
   - cd C:\toml11
-  - cmake -B build -G"NMake Makefiles" -DCMAKE_SYSTEM_VERSION="10.0.26624.0" -DCMAKE_CXX_STANDARD=11 -DTOML11_BUILD_TESTS=ON -DBUILD_TESTING=ON -DTOML11_PRECOMPILE=ON
+  - cmake -B build -G"NMake Makefiles" -DCMAKE_CXX_STANDARD=11 -DTOML11_BUILD_TESTS=ON -DBUILD_TESTING=ON -DTOML11_PRECOMPILE=ON
   - cmake --build build --config "%configuration%"
 
 test_script:
