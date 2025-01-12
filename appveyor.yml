@@ -24,10 +24,7 @@ build_script:
   - cmake --build build
 
 test_script:
-  - dir build\
-  - dir build\tests\
-  - dir build\tests\%configuration%
-  - cd build\tests\%configuration%
+  - cd build\tests\
   - ctest --timeout 300 --output-on-failure
   # - build\tests\Debug\test_comments.exe
   # - build\tests\Debug\test_datetime.exe
