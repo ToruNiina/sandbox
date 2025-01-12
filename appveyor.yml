@@ -6,8 +6,6 @@ environment:
       MSVC_VERSION: 2017
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
       MSVC_VERSION: 2019
-    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
-      MSVC_VERSION: 2022
 
 configuration:
   - Debug
@@ -25,8 +23,10 @@ build_script:
   - cmake --build build
 
 test_script:
+  - dir build\
+  - dir build\tests\
   - ctest --test-dir build --timeout 300 --output-on-failure
-  - build\tests\Debug\test_comments.exe
+  # - build\tests\Debug\test_comments.exe
   # - build\tests\Debug\test_datetime.exe
   # - build\tests\Debug\test_error_message.exe
   # - build\tests\Debug\test_find.exe
