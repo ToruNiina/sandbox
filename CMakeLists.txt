@@ -15,6 +15,7 @@ string(REGEX REPLACE "#define TOML11_VERSION_PATCH ([0-9]+)" "\\1" TOML11_VERSIO
 project(toml11 LANGUAGES CXX VERSION "${TOML11_VERSION_MAJOR}.${TOML11_VERSION_MINOR}.${TOML11_VERSION_PATCH}")
 
 include(CTest) # to use ${BUILD_TESTING}
+enable_testing() # should automatically called by CTest
 
 option(TOML11_PRECOMPILE "precompile toml11 library" OFF)
 

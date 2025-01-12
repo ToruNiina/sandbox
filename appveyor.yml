@@ -20,45 +20,45 @@ build_script:
   - cmake --build build --config "%configuration%"
 
 test_script:
-  # - ctest --test-dir build --build-config "%configuration%" --timeout 300 --output-on-failure
+  - ctest --test-dir build --build-config "%configuration%" --timeout 300 --output-on-failure
   - build\tests\Debug\test_comments.exe
-  - build\tests\Debug\test_datetime.exe
-  - build\tests\Debug\test_error_message.exe
-  - build\tests\Debug\test_find.exe
-  - build\tests\Debug\test_find_or.exe
-  - build\tests\Debug\test_format_integer.exe
-  - build\tests\Debug\test_format_floating.exe
-  - build\tests\Debug\test_format_table.exe
-  - build\tests\Debug\test_get.exe
-  - build\tests\Debug\test_get_or.exe
-  - build\tests\Debug\test_location.exe
-  - build\tests\Debug\test_literal.exe
-  - build\tests\Debug\test_parse_null.exe
-  - build\tests\Debug\test_parse_boolean.exe
-  - build\tests\Debug\test_parse_integer.exe
-  - build\tests\Debug\test_parse_floating.exe
-  - build\tests\Debug\test_parse_string.exe
-  - build\tests\Debug\test_parse_datetime.exe
-  - build\tests\Debug\test_parse_array.exe
-  - build\tests\Debug\test_parse_inline_table.exe
-  - build\tests\Debug\test_parse_table_keys.exe
-  - build\tests\Debug\test_parse_table.exe
-  - build\tests\Debug\test_result.exe
-  - build\tests\Debug\test_scanner.exe
-  - build\tests\Debug\test_serialize.exe
-  - build\tests\Debug\test_syntax_boolean.exe
-  - build\tests\Debug\test_syntax_integer.exe
-  - build\tests\Debug\test_syntax_floating.exe
-  - build\tests\Debug\test_syntax_string.exe
-  - build\tests\Debug\test_syntax_datetime.exe
-  - build\tests\Debug\test_syntax_key.exe
-  - build\tests\Debug\test_syntax_comment.exe
-  - build\tests\Debug\test_spec.exe
-  - build\tests\Debug\test_storage.exe
-  - build\tests\Debug\test_traits.exe
-  - build\tests\Debug\test_types.exe
-  - build\tests\Debug\test_utility.exe
-  - build\tests\Debug\test_user_defined_conversion.exe
-  - build\tests\Debug\test_value.exe
-  - build\tests\Debug\test_visit.exe
-  - build\tests\Debug\test_parse.exe
+  # - build\tests\Debug\test_datetime.exe
+  # - build\tests\Debug\test_error_message.exe
+  # - build\tests\Debug\test_find.exe
+  # - build\tests\Debug\test_find_or.exe
+  # - build\tests\Debug\test_format_integer.exe
+  # - build\tests\Debug\test_format_floating.exe
+  # - build\tests\Debug\test_format_table.exe
+  # - build\tests\Debug\test_get.exe
+  # - build\tests\Debug\test_get_or.exe
+  # - build\tests\Debug\test_location.exe
+  # - build\tests\Debug\test_literal.exe
+  # - build\tests\Debug\test_parse_null.exe
+  # - build\tests\Debug\test_parse_boolean.exe
+  # - build\tests\Debug\test_parse_integer.exe
+  # - build\tests\Debug\test_parse_floating.exe
+  # - build\tests\Debug\test_parse_string.exe
+  # - build\tests\Debug\test_parse_datetime.exe
+  # - build\tests\Debug\test_parse_array.exe
+  # - build\tests\Debug\test_parse_inline_table.exe
+  # - build\tests\Debug\test_parse_table_keys.exe
+  # - build\tests\Debug\test_parse_table.exe
+  # - build\tests\Debug\test_result.exe
+  # - build\tests\Debug\test_scanner.exe
+  # - build\tests\Debug\test_serialize.exe
+  # - build\tests\Debug\test_syntax_boolean.exe
+  # - build\tests\Debug\test_syntax_integer.exe
+  # - build\tests\Debug\test_syntax_floating.exe
+  # - build\tests\Debug\test_syntax_string.exe
+  # - build\tests\Debug\test_syntax_datetime.exe
+  # - build\tests\Debug\test_syntax_key.exe
+  # - build\tests\Debug\test_syntax_comment.exe
+  # - build\tests\Debug\test_spec.exe
+  # - build\tests\Debug\test_storage.exe
+  # - build\tests\Debug\test_traits.exe
+  # - build\tests\Debug\test_types.exe
+  # - build\tests\Debug\test_utility.exe
+  # - build\tests\Debug\test_user_defined_conversion.exe
+  # - build\tests\Debug\test_value.exe
+  # - build\tests\Debug\test_visit.exe
+  # - build\tests\Debug\test_parse.exe
