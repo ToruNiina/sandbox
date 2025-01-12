@@ -3,7 +3,11 @@ version: "{build}"
 environment:
   matrix:
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2017
-      generator: Visual Studio 15 2017
+      MSVC_VERSION: 2017
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
+      MSVC_VERSION: 2019
+    - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
+      MSVC_VERSION: 2022
 
 configuration:
   - Debug
@@ -15,13 +19,13 @@ install:
   - git submodule update --init --recursive
 
 build_script:
-  - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64'
+  - '"C:\Program Files (x86)\Microsoft Visual Studio\%MSVC_VERSION%\Community\VC\Auxiliary\Build\vcvarsall.bat" x64'
   - cd C:\toml11
   - cmake -B build -G"NMake Makefiles" -DCMAKE_CXX_STANDARD=11 -DTOML11_BUILD_TESTS=ON -DBUILD_TESTING=ON -DTOML11_PRECOMPILE=ON
-  - cmake --build build --config "%configuration%"
+  - cmake --build build
 
 test_script:
-  - ctest --test-dir build --build-config "%configuration%" --timeout 300 --output-on-failure
+  - ctest --test-dir build --timeout 300 --output-on-failure
   - build\tests\Debug\test_comments.exe
   # - build\tests\Debug\test_datetime.exe
   # - build\tests\Debug\test_error_message.exe
