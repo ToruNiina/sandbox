@@ -1,45 +1,45 @@
 set(TOML11_TEST_NAMES
-    # test_comments
-    # test_datetime
-    # test_error_message
-    # test_find
-    # test_find_or
-    # test_format_integer
-    # test_format_floating
-    # test_format_table
-    # test_get
-    # test_get_or
-    # test_location
-    # test_literal
-    # test_parse_null
-    # test_parse_boolean
-    # test_parse_integer
-    # test_parse_floating
-    # test_parse_string
-    # test_parse_datetime
-    # test_parse_array
-    # test_parse_inline_table
-    # test_parse_table_keys
-    # test_parse_table
+    test_comments
+    test_datetime
+    test_error_message
+    test_find
+    test_find_or
+    test_format_integer
+    test_format_floating
+    test_format_table
+    test_get
+    test_get_or
+    test_location
+    test_literal
+    test_parse_null
+    test_parse_boolean
+    test_parse_integer
+    test_parse_floating
+    test_parse_string
+    test_parse_datetime
+    test_parse_array
+    test_parse_inline_table
+    test_parse_table_keys
+    test_parse_table
     test_parse
-    # test_result
-    # test_scanner
-    # test_serialize
-    # test_syntax_boolean
-    # test_syntax_integer
-    # test_syntax_floating
-    # test_syntax_string
-    # test_syntax_datetime
-    # test_syntax_key
-    # test_syntax_comment
-    # test_spec
-    # test_storage
-    # test_traits
-    # test_types
-    # test_utility
-    # test_user_defined_conversion
-    # test_value
-    # test_visit
+    test_result
+    test_scanner
+    test_serialize
+    test_syntax_boolean
+    test_syntax_integer
+    test_syntax_floating
+    test_syntax_string
+    test_syntax_datetime
+    test_syntax_key
+    test_syntax_comment
+    test_spec
+    test_storage
+    test_traits
+    test_types
+    test_utility
+    test_user_defined_conversion
+    test_value
+    test_visit
     )
 
 if(BUILD_TESTING)
